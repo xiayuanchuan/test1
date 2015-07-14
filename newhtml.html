@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+xiaxiaxiaxiaTo change this license header, choose License Headers in Project Properties.
+xiaxiaxiaxiaTo change this template file, choose Tools | Templates
+xiaxiaxiaxiaand open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="./more/jquery.js"></script>
+        <style>
+            #test-scale{background-color: #00FF00;width: 100px;height: 100px;float: left;margin: 50px;
+                        -webkit-transition: all 1s linear;
+            }
+            #test-scale:hover{
+                /*rotate(30deg)*/
+                -webkit-transform: scaleY(1.2) rotate(10deg);
+            }
+        </style>
+    </head>
+    <body>
+        <div><button id="where_to_eat">去哪儿吃</button></div>
+        <div><button id="localstorage">本地存储</button></div>
+        <div>
+            <ul id="st_ul" style="text-decoration: none" >
+                <li ><a onclick="srul(this.innerHTML)" >添加</a></li>
+                <li onclick="srul(this.innerHTML)">显示列表</li>
+                <li onclick="srul(this.innerHTML)">WebSQLDatabase</li>
+            </ul>
+            <div id="stroage_text">
+                <table id="storage_table" style="display: none">
+                    <tr>
+                        <th width="100px">id</th>
+                        <th width="100px">key</th>
+                        <th width="100px">value</th>
+                        <th width="100px">操作</th>
+                    </tr>
+                </table>
+                <div id="add_st" style="display: none">
+                    <label>key:<input id="key_st" name="key"></label>
+                    <label>value:<input id="value_st" name="value"></label>
+                    <button id="add_st_sub">提交</button>
+
+                </div>
+            </div>
+            <div id="test">
+                <div id="test-scale">
+                    hahh1
+                </div>
+                <div id="test-scale">
+                    <img src="./more/image/1.png">
+                </div>                
+            </div>
+        </div>
+    </body>
+    <script src="./more/js/change.js"></script>
+</html>

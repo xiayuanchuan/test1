@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         
+<script type="text/javascript"> 
+    var sampling = Math.random() < 0.001;
+    var page_begintime = (+new Date());
+    (sampling) && ((new Image()).src = "http://isdspeed.qq.com/cgi-bin/r.cgi?flag1=7839&flag2=7&flag3=8&15=1000&r=" + Math.random());
+
+    var biz = "MjM5MzMyNzg0MA==";
+    var sn = "77664ad84e9e9f42cc70e763e75a31f6" || "";
+    var mid = "207454247" || "";
+    var idx = "2" || "" ;
+    
+    //辟谣需求
+    var is_rumor = ""*1;
+    var norumor = ""*1;
+    if (!!is_rumor&&!norumor){
+      if (!document.referrer || document.referrer.indexOf("mp.weixin.qq.com/mp/rumor") == -1){
+        location.href = "http://mp.weixin.qq.com/mp/rumor?action=info&__biz=" + biz + "&mid=" + mid + "&idx=" + idx + "&sn=" + sn + "#wechat_redirect";
+      }
+    }
+
+    //原创需求，需要跳转到中间页
+    /*
+    var copyrightInfo = {
+        display_source : ""*1,
+        nocopyrightsource : ""*1
+    };
+    if (!!copyrightInfo.display_source&&!copyrightInfo.nocopyrightsource){
+      if (!document.referrer || document.referrer.indexOf("mp.weixin.qq.com/mp/reprint") == -1){
+        location.href = "http://mp.weixin.qq.com/mp/reprint?action=info&__biz=" + biz + "&mid=" + mid + "&idx=" + idx + "&sn=" + sn + "#wechat_redirect";
+      }
+    }*/
+</script>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="dns-prefetch" href="//res.wx.qq.com">
+<link rel="dns-prefetch" href="//mmbiz.qpic.cn">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+<link rel="shortcut icon" type="image/x-icon" href="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/icon/common/favicon22c41b.ico">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<script type="text/javascript">
+    var uin = "";
+    var key = "";
+    var pass_ticket = "";
+
+	String.prototype.html= function(encode) {
+	    var replace =["&#39;", "'", "&quot;", '"', "&nbsp;", " ", "&gt;", ">", "&lt;", "<", "&amp;", "&", "&yen;", "¥"];
+	    //console.log(replace);
+	    if(encode){
+	        replace.reverse();
+	    }
+	    for (var i=0,str=this;i< replace.length;i+= 2){
+	         str=str.replace(new RegExp(replace[i],'g'),replace[i+1]);
+	    }
+	    
+	    return str;
+	};
+	pass_ticket = encodeURIComponent(pass_ticket.html(false).html(false).replace(/\s/g,"+"));
+</script>
+
+        <title>29个你必须知道的Linux命令</title>
+        
+<link rel="stylesheet" type="text/css" href="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/style/page/appmsg/page_mp_article_improve265a3c.css">
+<style>
+     
+    </style>
+<!--[if lt IE 9]>
+<link rel="stylesheet" type="text/css" href="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/style/page/appmsg/page_mp_article_improve_pc2637ae.css">
+<![endif]-->
+<script type="text/javascript">
+    document.domain = "qq.com";
+</script>
+
+    </head>
+    <body id="activity-detail" class="zh_CN mm_appmsg" ontouchstart="">
+        
+    <script type="text/javascript">
+        var write_sceen_time = (+new Date());
+        (sampling) && ((new Image()).src = "http://isdspeed.qq.com/cgi-bin/r.cgi?flag1=7839&flag2=7&flag3=8&16=1000&r=" + Math.random());
+    </script>
+    
+    <div id="js_cmt_mine" class="discuss_container editing access" style="display:none;">
+        <div class="discuss_container_inner">
+            <h2 class="rich_media_title">29个你必须知道的Linux命令</h2>
+            <div class="frm_textarea_box_wrp">
+                <span class="frm_textarea_box">
+                    <textarea id="js_cmt_input" class="frm_textarea" placeholder="评论将由公众帐号筛选后显示，对所有人可见。"></textarea>
+                </span>
+            </div>
+            <div class="discuss_btn_wrp"><a id="js_cmt_submit" class="btn btn_primary btn_discuss btn_disabled" href="javascript:;">提交</a></div>
+            <div class="discuss_list_wrp" style="display:none">
+                <div class="rich_tips with_line title_tips discuss_title_line">
+                    <span class="tips">我的评论</span>
+                </div>
+                <ul class="discuss_list" id="js_cmt_mylist"></ul>
+            </div>
+            <div class="rich_tips tips_global loading_tips" id="js_mycmt_loading">
+                <img src="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/icon/common/icon_loading_white22c04a.gif" class="rich_icon icon_loading_white" alt="">
+                <span class="tips">加载中</span>
+            </div>
+            <div class="wx_poptips" id="js_cmt_toast" style="display:none;">
+                <img alt="" class="icon_toast" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGoAAABqCAYAAABUIcSXAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3NpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDoyMTUxMzkxZS1jYWVhLTRmZTMtYTY2NS0xNTRkNDJiOGQyMWIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MTA3QzM2RTg3N0UwMTFFNEIzQURGMTQzNzQzMDAxQTUiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MTA3QzM2RTc3N0UwMTFFNEIzQURGMTQzNzQzMDAxQTUiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NWMyOGVjZTMtNzllZS00ODlhLWIxZTYtYzNmM2RjNzg2YjI2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjIxNTEzOTFlLWNhZWEtNGZlMy1hNjY1LTE1NGQ0MmI4ZDIxYiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pmvxj1gAAAVrSURBVHja7J15rF1TFMbXk74q1ZKHGlMkJVIhIgg1FH+YEpEQJCKmGBpThRoSs5jVVNrSQUvEEENIhGiiNf9BiERICCFIRbUiDa2qvudbOetF3Tzv7XWGffa55/uS7593977n3vO7e5+199p7v56BgQGh0tcmvAUERREUQVEERREUQVEERREUQVEERREUQVEERREUQVEERREUQVEERVAUQVEERVAUQbVYk+HdvZVG8b5F0xj4RvhouB+eCy8KrdzDJc1RtAX8ILxvx98V1GyCSkN98Cx4z/95/Wn4fj6j6tUEeN4wkFSnw1MJqj5NhBfAuwaUHREUg4lqNMmePVsHll/HFhVfe1t3FwpJI8DXCCquDrCWNN4B6Tb4M3Z98aTPmTvh0YHl18PXw29yZiKejoPvcUD6E74yFBJbVDk6Bb7K8aP/Hb4c/tRzEYIqprPhSxzlf4Uvhb/0Xoig8qnHAJ3lqPMzfDH8XZ4LEpRf2sVdA5/sqPO9Qfop70UJyn+/boaPddT5yrq7VUUvTIVJI7q74MMddXR8NB1eXcYvhBpZm0s2w72/o86HFoKvLau/pYaXzjLMdUJ6y0LwtWV9CIIaXtvA8+G9HHV03u5q+K+yH47U0NoRngPv7KjzHDwTLj0bS1BDazfJJlcnOOostC6ysnCT+q80G/sIvFVgeW09D8FPVT0uoP7VfvAD8NjA8pqmuAN+OcYAjso0RbIZ8DGB5TVNcRO8JMaHY9SXSdfa3eeANJimWBLrA7JFiZwIXye+NMUV8CcxP2SRFjXefok7NRjSGZJlWUPvw2/wtNiQirSoXWyMsR28wR7AzzYM0oXw+Y7yK+CLJGeaoqjyrJSdZJD6Ov4+z5y6NJc0Az7NUecHydIUy+v60KNyQHoM3nKI1y7YCFiq0i7uBvgER52vDdKqWn9djhY1Dn4G3n6Ecqm2rF74dvgoR53S0hQxW9RJAZAGW5bSn58QJA27dQ7uIEedjywEX5NKVxCqsY6y+qA+LxFI4+yZ6oH0trWkNan80jygtIUsc5SflgAsDXgehfdx1KkkTRE76tN+Xue2jnTU0Ru1oIbvpt30bBtKhOp5yaaRkts0lic8V1i6dPcIRx2d/l8Y8XtNNEg7OOo8bl1kmmOKnDsO88CaYzejau0hWZqiL7C83oCH4SeTHvwV2BqqsHRVztSEYOmWF80NeXZT6Hd4KflResE9vCnBOlCyGfDNAstHTVPUDWoQ1t3iW+9WNizvlhfd4aerXd+ThqiMfNR6+9LvOOro5OY5JX2H4+F7HZD+kGzlamMgldWiirQsjcwWFbjmqZJteekJLK9pisvgL6RhKvuciZiwzrWWGapfrPy30kBVcSBIrw0aD3PU0XB6cehntq7rTMf7/2iQlktDVdXJLXlg6VjmiYBn6rWSTRCH6hvJ0hQrpcGq8oidsmHpTP8t8DGO9/vcWt9qabiqPgup1yKyQwvC2tSefZ73SSpNkUJ4PlLorlHZ+446nc8f3fIyywlJhwrTuwVSjBa1ccvSxN0hjjoK5xVrYZMd9V6XbFfgBukixTwGLg8sDam3dZR/wZ6L/dJlin1en8LS+bgpFbz3Ygvzu1J1HKxYNqxGpCmaCEo12rrBorD6LRp8UbpcdR5VWhTW35KlKd6QFqjuM2XzwlpnMxTvSkuUwuG/Xlg6NtPjbT6WFimF/VG6LEvXgn8QGDjMbBukVECFwhpoS+CQatfX2Q1q6H7wENHdrfCr0lKleEB9JyxNneus+VJpsVL9TwI6W65LovWIGl3KtVJaLv7LBwYTFEERFEVQFEERFEVQFEERFEVQFEERFEVQFEERFEVQFEERFFWq/hFgADUMN4RzT6/OAAAAAElFTkSuQmCC">
+                <p class="toast_content">已评论</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="js_article" class="rich_media">
+        
+        <div id="js_top_ad_area" class="top_banner">
+ 
+        </div>
+                
+
+        <div class="rich_media_inner">
+            <div id="page-content">
+                <div id="img-content" class="rich_media_area_primary">
+                    <h2 class="rich_media_title" id="activity-name">
+                        29个你必须知道的Linux命令 
+                    </h2>
+                    <div class="rich_media_meta_list">
+                        						                        <em id="post-date" class="rich_media_meta rich_media_meta_text">2015-07-09</em>
+
+                                                <a class="rich_media_meta rich_media_meta_link rich_media_meta_nickname" href="javascript:void(0);" id="post-user">WEB开发者</a>
+                        <span class="rich_media_meta rich_media_meta_text rich_media_meta_nickname">WEB开发者</span>
+
+                        <div id="js_profile_qrcode" class="profile_container" style="display:none;">
+                            <div class="profile_inner">
+                                <strong class="profile_nickname">WEB开发者</strong>
+                                <img class="profile_avatar" id="js_profile_qrcode_img" src="" alt="">
+
+                                <p class="profile_meta">
+                                <label class="profile_meta_label">微信号</label>
+                                <span class="profile_meta_value">admin10000_com</span>
+                                </p>
+
+                                <p class="profile_meta">
+                                <label class="profile_meta_label">功能介绍</label>
+                                <span class="profile_meta_value">分享Web开发知识，让开发变得更简单！</span>
+                                </p>
+                                
+                            </div>
+                            <span class="profile_arrow_wrp" id="js_profile_arrow_wrp">
+                                <i class="profile_arrow arrow_out"></i>
+                                <i class="profile_arrow arrow_in"></i>
+                            </span>
+                        </div>
+                    </div>
+                                        
+                                                            
+                                                            
+                    <div class="rich_media_content" id="js_content">
+                        <p style="text-align: center;"><img data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicMTD8pI02gJGJj5F90rh8V0jFhgew9GQonMfoMohXyeX76hWtoPWOQV2JOOBwJibF2AVxg1T9PKlTg/0?wx_fmt=gif" data-type="gif" data-ratio="0.11857707509881422" data-w=""  /></p><p>　　虽然Linux发行版支持各种各样的饿GUI（graphical user interfaces），但在某些情况下，Linux的命令行接口(bash)仍然是 简单快速 的。Bash和 Linux Shell 需要输入命令来完成任务，因而被称为 命令行 接口。</p><p>　　命令是计算机执行任务的指令。可以使用命令去关闭计算机，或者列出当前目录的文件列表，或当前文本的内容，或者屏幕显示一条消息。</p><p>　　如果你是一个新手，并尝试使用命令行接口，我们收集了各种基本的Linux命令来供你学习，帮你在各种 Linux发行版 中完成各种任务。虽然不是很详细，但是对Linux初学者，或普通用火，或管理员都是很有用的。</p><p style="text-align: center;"><img data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUicbdMibBmPZbZxocLdTdwrhvFydBELFSeypxSFHGiaF40dPic8m0XRP0mFA/0?wx_fmt=jpeg" data-type="jpeg" data-cke-saved-src="/UploadFiles/Document/201507/09/20150709123640014617.JPG" data-ratio="0.5" data-w=""  /></p><h3>　　<span style="color: rgb(192, 0, 0);">1.ls – List</span></h3><p>　　ls 会列举出当前工作目录的内容（文件或文件夹），就跟你在GUI中打开一个文件夹去看里面的内容一样。</p><p style="text-align: center;"><img title="" data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUicF75jfwPd6mdXojQXRjFMWcAxTKiaooS065709tO84xsTRC7TVslnI0A/0?wx_fmt=jpeg" data-type="jpeg" data-cke-saved-src="/UploadFiles/Document/201507/09/20150709123307804138.JPG" data-ratio="0.24703557312252963" data-w=""  /></p><h3>　　<span style="color: rgb(192, 0, 0);">2.mkdir – Make Directory</span></h3><p>　　mkdir &lt;new-directory-name&gt; 常见一个新目录</p><p style="text-align: center;"><img title="" data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUicuC1Z1yPc8f9XMcsicHfHuZIUyZfm7OWfTrF1qgHLEG6EVRgd6QsTORg/0?wx_fmt=jpeg" data-type="jpeg" data-cke-saved-src="/UploadFiles/Document/201507/09/20150709123307584156.JPG" data-ratio="0.3561643835616438" data-w="365"  /></p><h3>　<span style="color: rgb(192, 0, 0);">　3.pwd – Print Working Directory</span></h3><p>　　pwd 显示当前工作目录</p><p style="text-align: center;"><img title="" data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUic8V5SDvJqBhJhuh9BCAiaTicfEhcib9fa6cughBRt62HCw02N738C5kYng/0?wx_fmt=jpeg" data-type="jpeg" data-cke-saved-src="/UploadFiles/Document/201507/09/20150709123307419807.JPG" data-ratio="0.332" data-w="250"  /></p><h3>　<span style="color: rgb(192, 0, 0);">　4.cd – Change Directory</span></h3><p>　　对于当前在终端运行的会中中， cd &lt;directory&gt; 将给定的文件夹（或目录）设置成当前工作目录。</p><p style="text-align: center;"><img title="" data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUicy8NaGls16CQiarUiaxNw8LwDjauicDXZj4tibWrk5opiaXU9YlVSTm7ViaVg/0?wx_fmt=jpeg" data-type="jpeg" data-cke-saved-src="/UploadFiles/Document/201507/09/20150709123307165283.JPG" data-ratio="0.274703557312253" data-w=""  /></p><h3>　　<span style="color: rgb(192, 0, 0);">5.rmdir – Remove Directory</span></h3><p>　　rmdir &lt;directory-name&gt; 删除给定的目录。</p><p style="text-align: center;"><img title="" data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUicnA9mGVib7bP9Q9TWhSDleYDGeEoOgeEGaIKic9t2u8ApwB5DspEbpYdA/0?wx_fmt=jpeg" data-type="jpeg" data-cke-saved-src="/UploadFiles/Document/201507/09/20150709123307798800.JPG" data-ratio="0.36065573770491804" data-w="366"  /></p><h3>　　<span style="color: rgb(192, 0, 0);">6.rm – Remove</span></h3><p>　　rm &lt;file-name&gt; 会删除给定的文件或文件夹，可以使用 rm -r &lt;directory-name&gt; 
+递归删除文件夹</p><p style="text-align: center;"><img title="" data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUicia1Ab6icLMepuMePM26Y9PNVzbkSXicgwoeW4UtbM9Ou81Uia6l7xL5ecw/0?wx_fmt=jpeg" data-type="jpeg" data-cke-saved-src="/UploadFiles/Document/201507/09/20150709123307280857.JPG" data-ratio="0.3155339805825243" data-w="412"  /></p><h3>　　<span style="color: rgb(192, 0, 0);">7.cp – Copy</span></h3><p>　　cp &lt;source-file&gt; &lt;destination-file&gt; 命令对文件或文件夹进行复制，可以使用 cp -r 
+&lt;source-folder&gt; &lt;destination-folder&gt; 选项来递归复制文件夹。</p><p style="text-align: center;"><img title="" data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUicZgib1Iiaz5bo2HArMQpF9JSyN6ne8ozfyam64uiaYyLicVAUEOjR8jjE8Q/0?wx_fmt=jpeg" data-type="jpeg" data-cke-saved-src="/UploadFiles/Document/201507/09/20150709123307505411.JPG" data-ratio="0.26679841897233203" data-w=""  /></p><h3>　　<span style="color: rgb(192, 0, 0);">8.mv – MoVe</span></h3><p>　　mv &lt;source&gt; &lt;destination&gt; 
+命令对文件或文件夹进行移动，如果文件或文件夹存在于当前工作目录，还可以对文件或文件夹进行重命名。</p><p style="text-align: center;"><img data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUic0qPiaMuJE9Vk1ygrLgaxbFicbAcN9EmxsPfibg78N3DLUIPFP8eJBZDyQ/0?wx_fmt=jpeg" data-type="jpeg" data-ratio="0.41699604743083" data-w="" data-s="300,640"  /><br  /></p><h3>　　<span style="color: rgb(192, 0, 0);">9.cat – concatenate and print files</span></h3><p>　　cat &lt;file&gt; 用于在标准输出（监控器或屏幕）上查看文件内容。</p><p style="text-align: center;"><img title="" data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUicA40o290Gq7FthukicvgfFBCbia09QPcYO5EsibjIdicCaxXnFHzlgUkS4g/0?wx_fmt=jpeg" data-type="jpeg" data-cke-saved-src="/UploadFiles/Document/201507/09/20150709123307192812.JPG" data-ratio="0.4245689655172414" data-w="464"  /></p><h3>　　<span style="color: rgb(192, 0, 0);">10.tail – print TAIL (from last) &gt;</span></h3><p>　　tail &lt;file-name&gt; 默认在标准输出上显示给定文件的最后10行内容，可以使用 tail -n N 
+&lt;file-name&gt; 指定在标准输出上显示文件的最后N行内容。</p><p style="text-align: center;"><img title="" data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUicN823UTv0biccYAYHmWHB666CK3zSkQ75icoSxtLjXicHbB3y4ia31kEbdQ/0?wx_fmt=jpeg" data-type="jpeg" data-cke-saved-src="/UploadFiles/Document/201507/09/20150709123307142148.JPG" data-ratio="1.266490765171504" data-w="379"  /></p><h3>　　<span style="color: rgb(192, 0, 0);">11.less – print LESS</span></h3><p>　　less &lt;file-name&gt; 按页或按窗口打印文件内容。在查看包含大量文本数据的大文件时是非常有用和高效的。你可以使用 Ctrl+F 
+向前翻页， Ctrl+B 向后翻页。</p><p style="text-align: center;"><img title="" data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUicL5ABpRI6Nn8GtTYer1LzkEuj4lZvn2jOteSGIsYWIiaYpsA8XDo4pdg/0?wx_fmt=jpeg" data-type="jpeg" data-cke-saved-src="/UploadFiles/Document/201507/09/20150709123307113623.JPG" data-ratio="0.29051383399209485" data-w=""  /></p><h3>　　<span style="color: rgb(192, 0, 0);">12.grep</span></h3><p>　　grep &quot;&lt;string&gt;&quot; &lt;file-name&gt; 在给定的文件中搜寻指定的字符串。 grep -i 
+&quot;&lt;string&gt;&quot; &lt;file-name&gt; 在搜寻时会忽略字符串的大小写，而 grep -r &quot;&lt;string&gt;&quot; 
+&lt;file-name&gt; 则会在当前工作目录的文件中递归搜寻指定的字符串。</p><p style="text-align: center;"><img title="" data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUicoUe0bL5fpBickic2Ye4I5ZcoQ2VkzbLnPf377Ajo5UYd1etrZGUeenPA/0?wx_fmt=jpeg" data-type="jpeg" data-cke-saved-src="/UploadFiles/Document/201507/09/20150709123307838117.JPG" data-ratio="0.7476635514018691" data-w="428"  /></p><h3>　　<span style="color: rgb(192, 0, 0);">13.Find</span></h3><p>　　这个命令会在给定位置搜寻与条件匹配的文件。你可以使用 find &lt;folder-to-search&gt; -name 
+&lt;file-name&gt; 的 -name 选项来进行区分大小写的搜寻， find &lt;folder-to-search&gt; -iname 
+&lt;file-name&gt; 来进行不区分大小写的搜寻。</p><p>　　find &lt;folder-to-search&gt; -iname &lt;file-name&gt;</p><p style="text-align: center;"><img title="" data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUicDpH3M3ibzIkvNl6ouo0sVMJabNgZoukiavibXurOUxP3Rk1DX3Itiaia18A/0?wx_fmt=jpeg" data-type="jpeg" data-cke-saved-src="/UploadFiles/Document/201507/09/20150709123307700124.JPG" data-ratio="0.29046563192904656" data-w="451"  /></p><h3>　　<span style="color: rgb(192, 0, 0);">14.tar</span></h3><p>　　tar 命令能创建、查看和提取tar压缩文件。 tar -cvf &lt;archive-name.tar&gt; 
+&lt;file1-OR-file2-OR-both-to-archive&gt; 是创建对应压缩文件， tar -tvf 
+&lt;archive-to-view.tar&gt; 来查看对应压缩文件， tar -xvf &lt;archive-to-extract.tar&gt; 
+来提取对应压缩文件。</p><p style="text-align: center;"><img title="" data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUicLGD2XkYmBN1vFaxK0dlA2z0KueZWmjiaYOuiahoyjehUuJdKXtZBA24w/0?wx_fmt=jpeg" data-type="jpeg" data-cke-saved-src="/UploadFiles/Document/201507/09/20150709123307026572.JPG" data-ratio="0.4723320158102767" data-w=""  /></p><h3>　　<span style="color: rgb(192, 0, 0);">15.gzip</span></h3><p>　　gzip &lt;filename&gt; 命令创建和提取gzip压缩文件，还可以用 gzip -d &lt;filename&gt; 
+来提取压缩文件。</p><p style="text-align: center;"><img data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUicKWQCZRib4mXkiaQXpBicKKK1fC6BS95d5hSK4VTPAgkn6ib2o1oOIAicqicg/0?wx_fmt=jpeg" data-type="jpeg" data-ratio="0.36561264822134387" data-w="" data-s="300,640"  /><br  /></p><h3>　　<span style="color: rgb(192, 0, 0);">16.unzip</span></h3><p>　　unzip &lt;archive-to-extract.zip&gt; 对gzip文档进行解压。在解压之前，可以使用 unzip -l 
+&lt;archive-to-extract.zip&gt; 命令查看文件内容。</p><p style="text-align: center;"><img title="" data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUicMJMIC9e0nRicyu95fLuJ8UA6qz5bXo7hNZvrrO1zplpo11ESrxibbFYQ/0?wx_fmt=jpeg" data-type="jpeg" data-cke-saved-src="/UploadFiles/Document/201507/09/20150709123307509361.JPG" data-ratio="0.6047430830039525" data-w=""  /></p><h3>　　<span style="color: rgb(192, 0, 0);">17.help</span></h3><p>　　&lt;command-name&gt; --help 会在终端列出所有可用的命令,可以使用任何命令的 -h 或 -help 
+选项来查看该命令的具体用法。</p><p style="text-align: center;"><img title="" data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUicJTmAeObJsqwM7OKBAtT0ba7h6jORib2ZyCicoSBS9TXsobvQ2ebibIy9Q/0?wx_fmt=jpeg" data-type="jpeg" data-cke-saved-src="/UploadFiles/Document/201507/09/20150709123307952499.JPG" data-ratio="1.1897233201581027" data-w=""  /></p><h3>　　<span style="color: rgb(192, 0, 0);">18.whatis – What is this command</span></h3><p>　　whatis &lt;command-name&gt; 会用单行来描述给定的命令。</p><p style="text-align: center;"><img title="" data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUicgbErXvClztiaRtiaVS1JV4U0w0gQPVard6Pib0JDgpQvWlGsw4cq4EkwA/0?wx_fmt=jpeg" data-type="jpeg" data-cke-saved-src="/UploadFiles/Document/201507/09/20150709123307473415.JPG" data-ratio="0.17588932806324112" data-w=""  /></p><h3>　　<span style="color: rgb(192, 0, 0);">19.man – Manual</span></h3><p>　　man &lt;command-name&gt; 会为给定的命令显示一个手册页面。</p><p style="text-align: center;"><img title="" data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUicTpXmhllU3yI78sJEkLR5zV9zem8gACCF5e7r6SzSJ2VOcDJqHPicjxg/0?wx_fmt=jpeg" data-type="jpeg" data-cke-saved-src="/UploadFiles/Document/201507/09/20150709123307954076.JPG" data-ratio="0.6284584980237154" data-w=""  /></p><h3>　　<span style="color: rgb(192, 0, 0);">20.exit</span></h3><p>　　exit 用于结束当前的终端会话。</p><p style="text-align: center;"><img title="" data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUic6IKrMwWdUhoNv4jYbsEiadoyKttyVo6sUFRTk30wAJaCpSKI7H6aY5g/0?wx_fmt=jpeg" data-type="jpeg" data-cke-saved-src="/UploadFiles/Document/201507/09/20150709123307055262.JPG" data-ratio="0.24308300395256918" data-w=""  /></p><h3>　　<span style="color: rgb(192, 0, 0);">21.ping</span></h3><p>　　ping &lt;remote-host-address&gt; 通过发送数据包ping远程主机(服务器)，常用与检测网络连接和服务器状态。</p><p style="text-align: center;"><img title="" data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUicUOqSCEvverVvYmFk7giaDD9sPI4mqLTURIyeHE3Q1kUQrT7wGgr5X5A/0?wx_fmt=jpeg" data-type="jpeg" data-cke-saved-src="/UploadFiles/Document/201507/09/20150709123307988327.JPG" data-ratio="0.6047430830039525" data-w=""  /></p><h3>　　<span style="color: rgb(192, 0, 0);">22.who – Who Is logged in</span></h3><p>　　who 能列出当前登录的用户名。</p><p style="text-align: center;"><img title="" data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUicvy1UQdVD1wcFF5LOF09XT7zsztYO7wr1rtJC9hUz4U6AcIicUxiaFgqg/0?wx_fmt=jpeg" data-type="jpeg" data-cke-saved-src="/UploadFiles/Document/201507/09/20150709123307769670.JPG" data-ratio="0.5193798449612403" data-w="387"  /></p><h3>　　<span style="color: rgb(192, 0, 0);">23.su – Switch User</span></h3><p>　　su &lt;username&gt; 用于切换不同的用户。即使没有使用密码，超级用户也能切换到其它用户。</p><p style="text-align: center;"><img title="" data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUicXpyice6sXPVfIiaswEmHQVRNCWnu3ccNj2sgWibvZDWFYpWmY3ic78JDDw/0?wx_fmt=jpeg" data-type="jpeg" data-cke-saved-src="/UploadFiles/Document/201507/09/20150709123307172462.JPG" data-ratio="0.23229461756373937" data-w="353"  /></p><h3>　<span style="color: rgb(192, 0, 0);">　24.uname</span></h3><p>　　uname 会显示出关于系统的重要信息，如内核名称、主机名、内核版本、处理机类型等等，使用 uname -a 可以查看所有信息。</p><p style="text-align: center;"><img data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUicX2IRSuBNrr2AptsPhtCVCxicEeAdoQWSuKibyH7kap5CW33U2Ij5icic7A/0?wx_fmt=jpeg" data-type="jpeg" data-ratio="0.1956521739130435" data-w="" data-s="300,640"  /><br  /></p><h3>　　<span style="color: rgb(192, 0, 0);">25.free – Free memory</span></h3><p>　　free 会显示出系统的空闲内存、已经占用内存、可利用的交换内存等信息， free -m 将结果中的单位转换成KB，而 free –g 则转换成GB。</p><p style="text-align: center;"><img data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUic0ubEJrLQxyr9LKFVWj6ticyLgKvgeOrwIjcol0IibNLTvWUia6f1WOTnw/0?wx_fmt=jpeg" data-type="jpeg" data-ratio="0.21739130434782608" data-w="" data-s="300,640"  /><br  /></p><h3>　　<span style="color: rgb(192, 0, 0);">26.df – Disk space Free</span></h3><p>　　df 查看文件系统中磁盘的使用情况–硬盘已用和可用的存储空间以及其它存储设备。你可以使用 df -h 将结果以人类可读的方式显示。</p><p style="text-align: center;"><img data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUicB3j5TP4NWhIhx3FxCYkYhfRDMiaGI9BaK1bibSJkRnmZAib0tnjib31V6Q/0?wx_fmt=jpeg" data-type="jpeg" data-ratio="0.4624505928853755" data-w="" data-s="300,640"  /><br  /></p><h3>　　<span style="color: rgb(192, 0, 0);">27.ps – ProcesseS</span></h3><p>　　ps 显示系统的运行进程。</p><p style="text-align: center;"><img data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUicDNZ9JmhftuRGhX7EuMSCibIw3EDPknc9ZlcIYbkrKE8kMkrm1dgg1icQ/0?wx_fmt=jpeg" data-type="jpeg" data-ratio="0.378698224852071" data-w="338" data-s="300,640"  /><br  /></p><h3>　　<span style="color: rgb(192, 0, 0);">28.Top – TOP processes</span></h3><p>　　top 命令会默认按照CPU的占用情况，显示占用量较大的进程,可以使用 top -u &lt;username&gt; 
+查看某个用户的CPU使用排名情况。</p><p style="text-align: center;"><img title="" data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUicskHCqBzsBWz7cNq2FJdj2Tn623VrvFPtpRZCSP6BEoveVCsKmJoicWA/0?wx_fmt=jpeg" data-type="jpeg" data-cke-saved-src="/UploadFiles/Document/201507/09/20150709123307449407.JPG" data-ratio="0.6304347826086957" data-w=""  /></p><h3>　　<span style="color: rgb(192, 0, 0);">29.shutdown</span></h3><p>　　shutdown 用于关闭计算机，而 shutdown -r 用于重启计算机。<br  /></p><p>　　via：http://www.ido321.com/1609.html</p><p style="text-align: center;"><img data-src="http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicMTD8pI02gJGJj5F90rh8V03su4ia9Cr16rib3TPmf9Qh1ahqDiarBxTCfoLY14h5zZvBgA1KpbB0ib7w/0?wx_fmt=jpeg" data-type="jpeg" data-ratio="0.4624505928853755" data-w="" data-s="300,640"  /></p>
+                    </div>
+
+                    <script type="text/javascript">
+                        var first_sceen__time = (+new Date());
+                    </script>
+                    <link rel="stylesheet" type="text/css" href="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/style/page/appmsg/page_mp_article_improve_combo26f1f1.css">
+                                        
+                                        
+                    <div class="rich_media_tool" id="js_toobar">
+
+                                                <a class="media_tool_meta meta_primary" id="js_view_source" href="javascript:void(0);">阅读原文</a>
+                                                <div id="js_read_area" class="media_tool_meta tips_global meta_primary" style="display:none;">阅读 <span id="readNum"></span></div>
+
+                        <span style="display:none;" class="media_tool_meta meta_primary tips_global meta_praise" id="like">
+                            <i class="icon_praise_gray"></i><span class="praise_num" id="likeNum"></span>
+                        </span>
+
+                        <a id="js_report_article" style="display:none;" class="media_tool_meta tips_global meta_extra" href="javascript:void(0);">举报</a>
+
+                    </div>
+                </div>
+
+                <div class="rich_media_area_extra">
+
+                    
+                    <div class="mpda_bottom_container" id="js_bottom_ad_area"></div>
+
+                    
+                    <div id="js_iframetest" style="display:none;"></div>
+
+                    
+                                    </div>
+               
+            </div>
+            <div id="js_pc_qr_code" class="qr_code_pc_outer" style="display:none;">
+                <div class="qr_code_pc_inner">
+                    <div class="qr_code_pc">
+                        <img id="js_pc_qr_code_img" class="qr_code_pc_img">
+                        <p>微信扫一扫<br>关注该公众号</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+        
+        <script>window.moon_map = {"a/gotoappdetail.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/a/gotoappdetail260530.js","a/ios.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/a/ios24a769.js","a/android.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/a/android22772d.js","a/profile.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/a/profile260530.js","biz_wap/utils/device.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/utils/device26a834.js","biz_common/utils/report.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_common/utils/report224ef3.js","biz_common/utils/cookie.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_common/utils/cookie224ef3.js","pages/report.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/pages/report26f1f1.js","pages/music_player.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/pages/music_player26f31f.js","appmsg/reward_entry.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/appmsg/reward_entry25de14.js","appmsg/comment.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/appmsg/comment260530.js","appmsg/like.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/appmsg/like2340dc.js","appmsg/a.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/appmsg/a26c998.js","pages/version4video.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/pages/version4video2707a2.js","biz_wap/utils/storage.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/utils/storage264325.js","biz_common/tmpl.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_common/tmpl224ef3.js","biz_common/ui/imgonepx.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_common/ui/imgonepx224ef3.js","biz_common/dom/attr.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_common/dom/attr22f190.js","biz_wap/utils/ajax.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/utils/ajax267ab4.js","biz_common/utils/string/html.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_common/utils/string/html224ef3.js","appmsg/report.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/appmsg/report23c757.js","biz_common/dom/class.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_common/dom/class236751.js","appmsg/report_and_source.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/appmsg/report_and_source23a582.js","appmsg/page_pos.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/appmsg/page_pos264325.js","appmsg/cdn_speed_report.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/appmsg/cdn_speed_report224ef3.js","appmsg/voice.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/appmsg/voice26f1f1.js","appmsg/qqmusic.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/appmsg/qqmusic26f1f1.js","appmsg/iframe.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/appmsg/iframe26a834.js","appmsg/review_image.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/appmsg/review_image2480be.js","appmsg/outer_link.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/appmsg/outer_link25ded2.js","biz_wap/jsapi/core.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/jsapi/core26e5dd.js","biz_common/dom/event.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_common/dom/event26f1f1.js","appmsg/copyright_report.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/appmsg/copyright_report261b9c.js","appmsg/async.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/appmsg/async26f0bd.js","biz_wap/ui/lazyload_img.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/ui/lazyload_img23354e.js","biz_common/log/jserr.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_common/log/jserr22589f.js","appmsg/share.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/appmsg/share26f2dc.js","biz_wap/utils/mmversion.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/utils/mmversion224ef3.js","appmsg/cdn_img_lib.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/appmsg/cdn_img_lib23c757.js","biz_common/utils/url/parse.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_common/utils/url/parse25b6ff.js","appmsg/index.js":"http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/appmsg/index26f1f1.js"};</script><script type="text/javascript" src="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/moon264d72.js"></script>
+    <script id="voice_tpl" type="text/html">        
+        <span id="voice_main_<#=voiceid#>_<#=posIndex#>" class="db audio_area <#if(!musicSupport){#> unsupport<#}#>">
+            <span class="tc tips_global unsupport_tips" <#if(show_not_support!==true){#>style="display:none;"<#}#>>
+            当前浏览器不支持播放音乐或语音，请在微信或其他浏览器中播放            </span>
+            <span class="audio_wrp db">
+                <span id="voice_play_<#=voiceid#>_<#=posIndex#>" class="audio_play_area">
+                    <i class="icon_audio_default"></i>
+                    <i class="icon_audio_playing"></i>
+                    <img src="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/icon/appmsg/audio/icon_audio_unread26f1f1.png" alt="" class="pic_audio_default">
+                </span>
+                <span class="audio_length tips_global"><#=duration_str#></span>
+                <span class="db audio_info_area">
+                    <strong class="db audio_title"><#=title#></strong>
+                    <span class="audio_source tips_global"><#if(window.nickname){#>来自<#=window.nickname#><#}#></span>
+                </span>
+                <span id="voice_progress_<#=voiceid#>_<#=posIndex#>" class="progress_bar" style="width:0px;"></span>
+            </span>
+        </span>
+    </script>
+
+    <script id="qqmusic_tpl" type="text/html">        
+        <span id="qqmusic_main_<#=comment_id#>_<#=posIndex#>" class="db qqmusic_area <#if(!musicSupport){#> unsupport<#}#>">
+            <span class="tc tips_global unsupport_tips" <#if(show_not_support!==true){#>style="display:none;"<#}#>>
+            当前浏览器不支持播放音乐或语音，请在微信或其他浏览器中播放            </span>
+            <span class="db qqmusic_wrp">
+                <span class="db qqmusic_bd">
+                    <span id="qqmusic_play_<#=musicid#>_<#=posIndex#>" class="play_area">
+                        <i class="icon_qqmusic_switch"></i>
+                        <img src="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/icon/appmsg/qqmusic/icon_qqmusic_default.2x26f1f1.png" alt="" class="pic_qqmusic_default">
+                        <img src="<#=music_img#>" data-autourl="<#=audiourl#>" data-musicid="<#=musicid#>" class="qqmusic_thumb" alt="">
+                    </span>
+                                        <a id="qqmusic_home_<#=musicid#>_<#=posIndex#>" href="javascript:void(0);" class="access_area">
+                        <span class="qqmusic_songname"><#=music_name#></span>
+                        <span class="qqmusic_singername"><#=singer#></span>
+                        <span class="qqmusic_source"><img src="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/icon/appmsg/qqmusic/icon_qqmusic_source263724.png" alt="">QQ音乐</span>
+                    </a>
+                </span>
+            </span>       
+        </span>
+    </script>
+
+    <script id="t_cmt" type="text/html">
+        <li class="discuss_item" id="cid<# if (is_from_me == 1) { #><#=my_id#><# } else { #><#=content_id#><# } #>">
+            <# if(is_elected == 1){ #>
+            <div class="discuss_opr">
+                <span class="media_tool_meta tips_global meta_praise js_comment_praise <# if(like_status == 1){ #>praised<# } #>" data-status="<#=like_status#>" data-content-id='<#=content_id#>'>
+                    <i class="icon_praise_gray"></i>
+                    <span class="praise_num"><# if(like_num_format !== 0){ #><#=like_num_format#> <# } #></span>
+                </span>
+            </div>
+            <# } #>
+            <div class="user_info">
+                <strong class="nickname"><#=nick_name#><# if(is_from_friend == 1){ #>(朋友)<# } #></strong>
+                <img class="avatar" src="<#=logo_url#>">
+            </div>
+            <div class="discuss_message">
+                <span class="discuss_status"><#=status#></span>
+                <#=content#>
+            </div>
+            <p class="discuss_extra_info">
+                <#=time#>               
+                <# if (is_from_me == 1) { #>
+                <a class="discuss_del js_del" href="javascript:;" data-my-id="<#=my_id#>" data-content-id="<#=content_id#>">删除</a>
+                <# } #>
+            </p>
+            <# if(reply && reply.reply_list && reply.reply_list.length > 0){ #>
+                <div class="reply_result">
+                    <div class="nickname">作者回复</div>
+                    <div class="discuss_message"><#=reply.reply_list[0].content#></div>
+                    <p class="discuss_extra_info"><#=reply.reply_list[0].time#></p>
+                </div>
+            <# } #>
+                
+        </li>
+    </script>
+
+  <script id="t_ad" type="text/html">
+    <div class="rich_media_extra" id="gdt_area">
+        <# if(pos_type==0){ #>
+        <div class="rich_tips with_line title_tips">
+            <span class="tips">推广</span>
+        </div>
+        <# } #>
+        <div class="js_ad_link extra_link" data-type="<#=type#>" data-ticket="<#=ticket#>" data-url="<#=url#>" data-rl="<#=rl#>"  data-aid="<#=aid#>" data-pt="<#=pt#>" data-tid="<#=traceid#>" data-gid="<#=group_id#>" data-apurl="<#=apurl#>">
+            <# if(pt==1){ #>
+            <#=hint_txt#>
+            <img class="icon_arrow_gray" src="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/icon/common/icon_arrow_gray1ef6d4.png">
+            <img class="icon_loading_white icon_after" style="display:none;" id="loading_<#=traceid#>" src="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/icon/common/icon_loading_white22c04a.gif">
+            <# }else if(pt==2){ #>
+            
+            <# if (logo.indexOf("http://mmsns.qpic.cn/") == 0){ #>
+            <div class="brand_logo"><img src="<#=logo#>" alt="logo图片"></div>
+            <# } #>
+            <img class="appmsg_banner" src="<#=image_url#>">
+            <# if(watermark_type!=0){ #><i class="promotion_tag"><# if(watermark_type==1){ #>商品推广<# }else if (watermark_type==2){ #>活动推广<# } #></i><# } #>
+            <# }else if(pt==7){ #>
+            
+            <div class="preview_group preview_card">
+                <div class="preview_group_inner card_inner">
+                    <div class="preview_group_info">
+                        <strong class="preview_group_title2"><#=hint_txt#></strong>
+                        <div class="preview_group_desc"><#=ad_desc#></div>
+                        <img src="<#=image_url#>" alt="" class="preview_card_avatar">
+                    </div>
+                </div>
+            </div>
+            <# }else if(pt==100){ #>
+            <div class="preview_group">
+                <div class="preview_group_inner">
+                    <div class="preview_group_info append_btn">
+                        <strong class="preview_group_title"><#=biz_info.nick_name#></strong>
+                        <div class="preview_group_desc"><#=hint_txt#></div>
+                        <# if(!!biz_info.head_img){ #>
+                        <img src="<#=biz_info.head_img#>" alt="" class="preview_group_avatar br_radius">
+                        <# }else{ #>
+                        <img class="preview_group_avatar br_radius" src="http://mmbiz.qpic.cn/mmbiz/a5icZrUmbV8p5jb6RZ8aYfjfS2AVle8URwBt8QIu6XbGewB9wiaWYWkPwq4R7pfdsFibuLkic16UcxDSNYtB8HnC1Q/0" alt="<#=biz_info.nick_name#>">
+                        <# } #>                                 
+                    </div>
+                    <div class="preview_group_opr">
+                        <a id="js_view_profile_<#=pos_type#>" <# if(biz_info.is_subscribed == 0){ #>style="display:none"<# } #> class="btn btn_inline btn_primary btn_line js_ad_btn" href="javascript:void(0);">查看</a>
+                        <a id="js_add_contact_<#=pos_type#>" data-url="<#=url#>" data-type="<#=type#>" data-tid="<#=traceid#>" data-rl="<#=rl#>" <# if(biz_info.is_subscribed ==1){ #>style="display:none"<# } #> class="btn btn_inline btn_line  btn_primary js_ad_btn" href="javascript:void(0);">关注</a>
+                    </div>
+                </div>
+            </div>
+            <# }else if(pt==102){ #>
+            <div class="preview_group">
+                <div class="preview_group_inner">
+                    <div class="preview_group_info append_btn">
+                        <strong class="preview_group_title"><#=app_info.app_name#></strong>
+                        <div class="preview_group_desc"><#=hint_txt#></div>
+                        <img src="<#=app_info.icon_url#>" alt="" class="preview_group_avatar br_radius">
+                    </div>
+                    <div class="preview_group_opr">
+                        <a id="js_app_action_<#=pos_type#>" class="btn btn_inline btn_primary js_ad_btn btn_download" href="javascript:void(0);">下载</a>
+                    </div>
+                </div>
+            </div>
+            <# }else if(pt==101){ #>
+            <div class="preview_group preview_card">
+                <div class="preview_group_inner card_inner">                            
+                    <div class="preview_group_info append_btn">
+                        <strong class="preview_group_title"><#=app_info.app_name#></strong>
+                        <div class="preview_group_desc"><#=hint_txt#></div>
+                        <img src="<#=app_info.icon_url#>" alt="" class="preview_card_avatar">                               
+                    </div>
+                    <div class="preview_group_opr">
+                        <a href="javascript:void(0);" id="js_app_action_<#=pos_type#>" class="btn btn_inline btn_primary js_ad_btn">下载</a>
+                    </div>
+                </div>                        
+            </div>
+            <# }else if(pt==103||pt==104){ #>
+            <div class="preview_group obvious_app">
+                <div class="preview_group_inner">
+                    <div class="pic_app">
+                        <img src="<#=image_url#>" alt="">
+                    </div>
+                    <div class="info_app">
+                        <p class="name_app"><#=app_info.app_name#></p>
+                        <# if(pt==103){ #>
+                        <p class="profile_app" style="display:none;"><span class="fun_exp"><#=app_info._category#></span><em>|</em><span class="compacity"><#=app_info._app_size#></span></p>
+                        <# } else if(pt==104){ #>
+                        <p class="profile_app" style="display:none;"><span class="fun_exp"><#=app_info._app_size#></span><em>|</em><span class="compacity"><#=app_info._down_count#></span></p>
+                        <# } #>
+                        
+                        <p class="grade_app" id="js_app_rating_<#=pos_type#>">
+                            
+                            <span class="js_stars stars" style="display:none;"></span>
+                            
+                            <span class="js_scores scores">暂无评分</span>
+                        </p>
+                        <div class="dm_app">
+                            <a href="javascript:void(0);" id="js_appdetail_action_<#=pos_type#>" class="ad_btn btn_download js_ad_btn">下载</a>
+                            <p class="extra_info">来自<# if(pt==103){ #>App Store<# }else{ #>腾讯应用宝<# } #></p>
+                        </div>
+                    </div>
+                </div>            
+            </div>
+            <# } #>
+        </div>
+    </div>
+  </script>
+  <script type="text/javascript">
+      var not_in_mm_css = "http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/style/page/appmsg/not_in_mm2637ae.css";
+      var windowwx_css = "http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/style/page/appmsg/page_mp_article_improve_pc2637ae.css";
+      var tid = "";
+      var aid = "";
+      var appuin = "MjM5MzMyNzg0MA==";
+
+      var source = "5";
+      var scene = 75;
+      
+      var itemidx = "";
+      var nickname = "WEB开发者";
+      var ct = "1436423934";
+      var user_name = "gh_85fec14db363";
+      var user_name_new = "";
+      var fakeid   = "";
+      var version   = "";
+      var is_limit_user   = "0";
+      var msg_title = "29个你必须知道的Linux命令";
+      var msg_desc = "　　虽然Linux发行版支持各种各样的饿GUI（graphical&nbsp;user&nbsp;interfaces），但在某";
+      var msg_cdn_url = "http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNqKbzpMJG15qhHa28FPNUicfNQVYFIhbm40aqZMtWhXbP8xse7yp2ibFcT7Xq5mZ2H0rbdAbLSa0Yg/0?wx_fmt=jpeg";
+      var msg_link = "http://mp.weixin.qq.com/s?__biz=MjM5MzMyNzg0MA==&amp;mid=207454247&amp;idx=2&amp;sn=77664ad84e9e9f42cc70e763e75a31f6#rd";
+      var user_uin = "0"*1;
+      var msg_source_url = 'http://www.admin10000.com/document/6519.html#rd';
+      var img_format = 'jpeg';
+      var networkType;
+      var appmsgid = '' || '207454247';
+      var comment_id = "0" * 1;
+      var svr_time = "1436775798" * 1;
+      var comment_enabled = "" * 1;
+      var is_need_reward = "0" * 1;
+      var is_https_res = ("" * 1) && (location.protocol == "https:");
+
+      var devicetype = "";
+      var source_username = "";
+
+      var show_comment = "";
+      var __appmsgCgiData = {
+            can_use_page : "0"*1,
+            card_pos : "",
+            copyright_stat : "0",
+            round_head_img : "http://mmbiz.qpic.cn/mmbiz/0tIK8YmulicNCkbp1d1ML0ib9PnumLORIriaURsQicEEItFZ3MK6iaEib02lCzlSCtR4xGY64yNODR4PlnFKGicjnIS8A/0"||(window.location.protocol+"//"+window.location.host + "http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/pic/appmsg/pic_rumor_link.2x264e76.jpg")
+      };
+      var _empty_v = "http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/pic/pages/voice/empty26f1f1.mp3";
+      
+      seajs.use("appmsg/index.js");
+  </script>
+
+    </body>
+</html>
+
+ 

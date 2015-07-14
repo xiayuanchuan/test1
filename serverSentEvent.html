@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>serverSentEvent</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            var source;
+            function init() {
+                var url = "http://localhost/Test/serverSentEvent.php";
+                try {
+                    source = new EventSource(url);
+                    source.onopen = function (event) {
+                        log("连接已经建立" + this.readyState);
+                    };
+                    source.onmessage = function (event) {
+                        log("<b>接收到的数据:" + event.data + "</b>");
+                    };
+                    source.onerror = function (event) {
+                        log("<b>出错啦:" + this.readyState + "</b>");
+                    };
+                } catch (err) {
+                    log(err.message);
+                }
+
+            }
+
+            /***
+             * g该函数用于关闭eventSource连接
+             */
+            function quit() {
+                log("已经退出");
+                source.close();
+                source = null;
+            }
+
+            /***
+             * 该函数用于将信息写进div
+             */
+            function log(msg) {
+                document.getElementById("log").innerHTML += "<br>" + msg;
+            }
+
+
+        </script>
+    </head>
+    <body onload="init()">
+        <div>
+            <button onclick="quit()">t退出</button>
+            <div id="log">
+                
+            </div>
+        </div>
+
+    </body>
+</html>
