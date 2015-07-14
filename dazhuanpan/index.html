@@ -22,6 +22,24 @@
             var dataobj;
 
             $(function () {
+                //抽奖画布设置
+                alert(111);
+$.ajax({
+                    data: "get",
+                    url: "choujiang.php",
+                    data: {'jiangNum':1},
+                    cache: false,
+                    async: true,
+                    success: function (data) {
+        alert(data);
+        
+//        data = $.parseJSON(data);
+//                        dataobj = data;
+//                        b = dataobj.data.id * 30 + data.arang;
+
+                    }
+                });
+                
                 $("#startbtn").rotate({
                     bind: {
                         click: function () {
@@ -82,7 +100,7 @@
         <div id="main">
             <div class="msg"></div>
             <div class="demo">
-                <div id="disk"><></div>
+                <div id="disk"><canvas id="background-disk"></canvas></div>
                 <div id="start"><img src="start.png" id="startbtn"></div>
             </div>
             <div id="result">
