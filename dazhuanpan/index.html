@@ -14,93 +14,159 @@
             #result{position: relation;
                     top:20px;
                     left:100px}
-        </style>
-        <script type="text/javascript" src="./jquery.js"></script>
-        <script type="text/javascript" src="./jQueryRotate.2.2.js"></script>
-        <script type="text/javascript" src="./jquery.easing.min.js"></script>
-        <script type="text/javascript">
-            var dataobj;
+            </style>
+            <script type="text/javascript" src="./jquery.js"></script>
+            <script type="text/javascript" src="./jQueryRotate.2.2.js"></script>
+            <script type="text/javascript" src="./jquery.easing.min.js"></script>
+            <script type="text/javascript">
+                /***
+                 * 
+                 * @returns {this}
+                 * 创建扇形函数原型 
+                 * 添加于2015.07.14晚
+                 */
+                //扇形
+                CanvasRenderingContext2D.prototype.sector = function (x, y, radius, sDeg, eDeg) {
+// 初始保存
+                    this.save();
+// 位移到目标点
+                    this.translate(x, y);
+                    this.beginPath();
+// 画出圆弧
+                    this.arc(0, 0, radius, sDeg, eDeg);
+// 再次保存以备旋转
+                    this.save();
+// 旋转至起始角度
+                    this.rotate(eDeg);
+// 移动到终点，准备连接终点与圆心
+                    this.moveTo(radius, 0);
+// 连接到圆心
+                    this.lineTo(0, 0);
+// 还原
+                    this.restore();
+// 旋转至起点角度
+                    this.rotate(sDeg);
+// 从圆心连接到起点
+                    this.lineTo(radius, 0);
+                    this.closePath();
+// 还原到最初保存的状态
+                    this.restore();
+                    return this;
+                };
+                /******************************************/
 
-            $(function () {
-                //抽奖画布设置
-                alert(111);
-$.ajax({
-                    data: "get",
-                    url: "choujiang.php",
-                    data: {'jiangNum':1},
-                    cache: false,
-                    async: true,
-                    success: function (data) {
-        alert(data);
-        
-//        data = $.parseJSON(data);
-//                        dataobj = data;
-//                        b = dataobj.data.id * 30 + data.arang;
+                var dataobj;
 
-                    }
-                });
-                
-                $("#startbtn").rotate({
-                    bind: {
-                        click: function () {
-                            //var a = Math.floor(Math.random() * 360);
-                            var a = getData();
-                            $(this).rotate({
-                                duration: 3000,
-                                angle: 0,
-                                animateTo: 1440 + a,
-                                easing: $.easing.easeOutSine,
-                                callback: function () {
+                $(function () {
+                    //抽奖画布设置
+                    $.ajax({
+                        data: "get",
+                        url: "choujiang.php",
+                        data: {'jiangNum': 1},
+                        cache: false,
+                        async: true,
+                        success: function (data) {
+                            data = $.parseJSON(data);
+                            var canvas = document.getElementById("background-disk");
+                            var ctx = new Array();
 
-                                    if (dataobj.state === 0) {
-                                        alert("sorry! you are late!" + dataobj.data.anme + dataobj.message);
-                                    } else {
-                                        //alert("恭喜中奖啦 ！" + dataobj.data.anme);
-                                        // jiangXiang(a);
-                                        $("#result-ul").append("<li>"+"恭喜中奖啦 ！" + dataobj.data.anme+"</li>");
-                                    }
-                                }
-                            });
+                            var fillstylestr = "rgba(222,11,22,1)-#0f0-#00f-#789";
+                            var fillstylearr = new Array();
+                            fillstylearr = fillstylestr.split("-");
+                            var fillstylelength = fillstylearr.length;
+//                            alert(fillstylelength);
+                            var degs = Math.PI / 180;
+
+                            var count = data.count;
+                            var eachdeg = 360 / count;
+                            var sdeg = 90;
+                            var edeg = 0;
+                            var j = 0;
+                            for (var i = 0; i < data.data.length; i++) {
+                                //alert(data.data[i].anme);
+                                j = i % fillstylelength;
+                                ctx[i] = canvas.getContext('2d');
+
+                                edeg = (i + 1) * eachdeg + 90;
+                                sdeg = i * eachdeg + 90;
+                                //alert("sdeg:" + sdeg + "edeg:" + edeg);
+                                ctx[i].sector(208, 208, 208, sdeg * degs, degs * edeg).fill();
+                                ctx[i].fillStyle = fillstylearr[j];
+                                
+//                                ctx[i].sector(208, 208, 250, (sdeg * degs+degs * edeg)/2,(sdeg * degs+degs * edeg)/2+degs ).fill();
+//                                ctx[i].fillStyle = fillstylearr[j+1];
+                                var XSIN=208-150*Math.sin(sdeg+15);
+                                var YCOS=208-150*Math.cos(sdeg+15);
+                                console.log("Y%d  ___X%d",YCOS,XSIN);
+                                ctx[i].strokeText(data.data[i].anme,XSIN,YCOS);
+                                ctx[i].strokeStyle ="#fff";
+                                ctx[i].font="16px Courier New";
+                            }
+
                         }
-                    }
+                    });
+
+                    $("#startbtn").rotate({
+                        bind: {
+                            click: function () {
+                                //var a = Math.floor(Math.random() * 360);
+                                var a = getData();
+                                $(this).rotate({
+                                    duration: 3000,
+                                    angle: 0,
+                                    animateTo: 1440 + a,
+                                    easing: $.easing.easeOutSine,
+                                    callback: function () {
+
+                                        if (dataobj.state === 0) {
+                                            alert("sorry! you are late!" + dataobj.data.anme + dataobj.message);
+                                        } else {
+                                            //alert("恭喜中奖啦 ！" + dataobj.data.anme);
+                                            // jiangXiang(a);
+                                            $("#result-ul").append("<li>" + "恭喜中奖啦 ！" + dataobj.data.anme + "</li>");
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                    });
                 });
-            });
-            var b = null;
-            //function 同步获取后台数据
-            function getData() {
+                var b = null;
+                //function 同步获取后台数据
+                function getData() {
 
-                $.ajax({
-                    data: "get",
-                    url: "choujiang.php",
-//                    data: "type=getText&commentText=" + text,
-                    cache: false,
-                    async: false,
-                    success: function (data) {
-                        data = $.parseJSON(data);
-                        dataobj = data;
-                        b = dataobj.data.id * 30 + data.arang;
+                    $.ajax({
+                        data: "get",
+                        url: "choujiang.php",
+                        //                    data: "type=getText&commentText=" + text,
+                        cache: false,
+                        async: false,
+                        success: function (data) {
+                            data = $.parseJSON(data);
+                            dataobj = data;
+                            b = dataobj.data.id * 360 / dataobj.count + data.arang;
 
-                    }
-                });
-                return b;
-            }
-            function getData1() {
-                alert(getData());
+                        }
+                    });
+                    return b;
+                }
+                function getData1() {
+                    alert(getData());
 
-            }
-        </script>
-    </head>
+                }
+            </script>
+        </head>
 
-    <body>
-        <div id="header">
+        <body>
+            <div id="header">
 
-           <!-- <div id="logo"><button onclick="getData1()">dianji</button></div>-->
+            <!-- <div id="logo"><button onclick="getData1()">dianji</button></div>-->
         </div>
 
         <div id="main">
             <div class="msg"></div>
             <div class="demo">
-                <div id="disk"><canvas id="background-disk"></canvas></div>
+                <div id="disk"><canvas id="background-disk" width="417" height="417"></canvas></div>
                 <div id="start"><img src="start.png" id="startbtn"></div>
             </div>
             <div id="result">
@@ -108,6 +174,8 @@ $.ajax({
 
                 </ul>
             </div>
+
+
         </div>
 
 
